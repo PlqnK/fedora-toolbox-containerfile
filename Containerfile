@@ -18,7 +18,8 @@ RUN dnf upgrade -y && \
     openssh rsync curl wget \
     fish fzf tmux starship git \
     vim code \
-    ansible python-passlib python-netaddr \
+    make \
+    ansible python3-ansible-lint python3-passlib python3-netaddr python3-jmespath \
     ShellCheck \
     bat ripgrep \
     iputils tcpdump netcat ndisc6 bind-utils nmap whois ipcalc \
