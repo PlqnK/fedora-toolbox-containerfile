@@ -27,4 +27,11 @@ RUN dnf upgrade -y && \
     yt-dlp && \
     dnf clean all
 
+RUN wget -O bitwarden-cli.zip "https://vault.bitwarden.com/download/?app=cli&platform=linux" && \
+    unzip bitwarden-cli.zip && \
+    mv bw /usr/local/bin/bw && \
+    chown root:root /usr/local/bin/bw && \
+    chmod +x /usr/local/bin/bw && \
+    rm -f bitwarden-cli.zip
+
 CMD /usr/bin/bash
