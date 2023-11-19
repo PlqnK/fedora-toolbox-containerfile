@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-podman container stop fedora-toolbox-38
-toolbox rm fedora-toolbox-38
-podman build -t fedora-toolbox-38 .
-toolbox create --image fedora-toolbox-38
+version=39
+
+podman container stop fedora-toolbox-${version}
+toolbox rm fedora-toolbox-${version}
+podman image rm localhost/fedora-toolbox-${version}:latest
+podman pull registry.fedoraproject.org/fedora-toolbox:${version}
+podman build -t fedora-toolbox-${version} .
+toolbox create --image fedora-toolbox-${version}
