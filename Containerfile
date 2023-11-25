@@ -16,17 +16,17 @@ RUN dnf copr enable -y atim/starship
 RUN dnf upgrade -y && \
     dnf install -y \
     openssh rsync curl wget \
-    fish fzf tmux starship git \
+    zsh zsh-autosuggestions zsh-syntax-highlighting fzf tmux starship git \
+    levien-inconsolata-fonts \
     vim code \
     make \
     ansible python3-ansible-lint python3-passlib python3-netaddr python3-jmespath \
     ShellCheck \
-    bat ripgrep \
+    jq bat ripgrep \
     iputils tcpdump netcat ndisc6 bind-utils nmap whois ipcalc \
     p7zip zip unzip unrar \
-    pandoc perl-Image-ExifTool \
-    yt-dlp && \
-    dnf clean all
+    pandoc perl-Image-ExifTool ImageMagick \
+    yt-dlp
 
 RUN wget -O bitwarden-cli.zip "https://vault.bitwarden.com/download/?app=cli&platform=linux" && \
     unzip bitwarden-cli.zip && \
@@ -34,5 +34,8 @@ RUN wget -O bitwarden-cli.zip "https://vault.bitwarden.com/download/?app=cli&pla
     chown root:root /usr/local/bin/bw && \
     chmod +x /usr/local/bin/bw && \
     rm -f bitwarden-cli.zip
+
+RUN release=$(curl -s "https://api.github.com/repos/twpayne/chezmoi/releases/latest" | jq -r '.tag_name') && \
+    dnf install -y "https://github.com/twpayne/chezmoi/releases/download/${release}/chezmoi-${release//v}-x86_64.rpm"
 
 CMD /usr/bin/bash
