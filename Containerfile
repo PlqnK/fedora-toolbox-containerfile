@@ -19,7 +19,7 @@ RUN dnf upgrade -y && \
     zsh zsh-autosuggestions zsh-syntax-highlighting fzf tmux starship git \
     levien-inconsolata-fonts \
     vim code \
-    make \
+    make butane \
     ansible python3-ansible-lint python3-passlib python3-netaddr python3-jmespath \
     ShellCheck \
     jq bat ripgrep \
