@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-version=39
+version=40
 
 podman container stop fedora-toolbox-${version}
 toolbox rm fedora-toolbox-${version}
