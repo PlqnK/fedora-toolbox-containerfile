@@ -11,7 +11,7 @@ RUN rpm --import https://packages.microsoft.com/keys/microsoft.asc
 
 COPY etc/yum.repos.d/ /etc/yum.repos.d/
 
-RUN dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+RUN dnf install -y --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 
 RUN dnf upgrade -y && \
     dnf install -y \
