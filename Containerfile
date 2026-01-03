@@ -29,4 +29,6 @@ RUN dnf upgrade -y && \
     chezmoi bitwarden-cli \
     yt-dlp
 
+RUN curl -fL -o /usr/local/bin/talosctl "https://github.com/siderolabs/talos/releases/latest/download/talosctl-linux-amd64" && chmod +x /usr/local/bin/talosctl
+
 CMD /usr/bin/bash
